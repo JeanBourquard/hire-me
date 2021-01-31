@@ -10,9 +10,12 @@ function Child(data) {
         <div className="child-card">
            <div className="avatar-container"><img className="avatar" src={childData.childData.image.small} alt="child-avatar"></img></div> 
             <div className="child-info">
-                <div>{childData.childData.name.fullName}</div>
-                <div>{childData.childData.birthday}</div>
-                <div>{childData.childData.gender === 1 ? (<span>Boy</span>) : (<span>Girl</span>)}</div>
+                <div>
+                    {childData.childData.name.firstName}
+                </div>
+                <div>
+                    {childData.childData.name.lastName}
+                </div>
             </div>
             <div className="btn-container">
                 <button className="btn">Check in</button>
