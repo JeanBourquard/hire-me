@@ -1,7 +1,11 @@
 body {
     background-color: #F9F8F7;
     margin: 0;
-    color: #535A61;
+    color: #6B6D78;
+}
+
+.logo {
+    width: 10px;
 }
 
 .search-field {
@@ -9,6 +13,8 @@ body {
     text-align: start;
     color: #636C74;
     border-width: 0px;
+    height: 25px;
+    padding: 5px;
 }
 
 .search-field::placeholder {
@@ -38,6 +44,7 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
     align-self: center;
     text-align: start;
+    font-weight: bold;
 }
 
 .btn-container {
@@ -102,4 +109,8 @@ body {
 
 .checkedout-msg{
     color :#FF543D;
+}
+
+.loading-msg {
+    color: #FF9617;
 }

@@ -7,6 +7,7 @@ function Child(data) {
 
     const[childData, setChildData] = useState(data);
     const[checkedIn, setCheckedIn] = useState(data.childData.checkedIn);
+    const[requestLoading, setRequestLoading] = useState(false);
 
     const checkInOut = (value) => {
         if(value === true)
@@ -14,6 +15,7 @@ function Child(data) {
             var today = new Date();
             var time = today.getHours() + ":" + today.getMinutes();
             console.log(time)
+            setRequestLoading(true);
             axios.post('https://tryfamly.co/api/v2/children/' + data.childData.childId + '/checkins', {
                 accessToken: ACCESS_TOKEN,
                 pickupTime: time
@@ -21,17 +23,20 @@ function Child(data) {
                 .then(response => {
                     console.log('child ' + data.childData.name.fullName + ' checkedin')
                     setCheckedIn(value);
+                    setRequestLoading(false);
                 })
                 .catch(error => console.error(`Error: ${error}`));
         }
         else
         {
+            setRequestLoading(true);
             axios.post('https://tryfamly.co/api/v2/children/' + data.childData.childId + '/checkout', {
                 accessToken: ACCESS_TOKEN,
             })
                 .then(response => {
                     console.log('child ' + data.childData.name.fullName + ' checkedout')
                     setCheckedIn(value);
+                    setRequestLoading(false);
                 })
                 .catch(error => console.error(`Error: ${error}`));
         }
@@ -47,8 +52,10 @@ function Child(data) {
                 <div>
                     {childData.childData.name.lastName}
                 </div>
-                <div className="checkinout-msg">
-                    {checkedIn ? "Checked in" : "Checked out"}
+                <div className= {`checkinout-msg ${requestLoading ? "loading-msg" : (checkedIn ? "checkedin-msg" : "checkedout-msg")}`}>
+                    {
+                        requestLoading ? "Loading " : (checkedIn ? "Checked in" : "Checked out")
+                    }
                 </div>
             </div>
             <div className="btn-container">
