@@ -26,8 +26,7 @@ function Child(data) {
             var time = hours + ":" + minutes;
             console.log(time)
             setRequestLoading(true);
-            console.log("access tokem " + ACCESS_TOKEN);
-            axios.post('https://tryfamly.co/api/v2/children/' + data.childData.childId + '/checkins', {
+            axios.post(`https://tryfamly.co/api/v2/children/${data.childData.childId}/checkins`, {
                 accessToken: ACCESS_TOKEN,
                 pickupTime: time
             })
@@ -41,7 +40,7 @@ function Child(data) {
         else
         {
             setRequestLoading(true);
-            axios.post('https://tryfamly.co/api/v2/children/' + data.childData.childId + '/checkout', {
+            axios.post(`https://tryfamly.co/api/v2/children/${data.childData.childId}/checkout`, {
                 accessToken: ACCESS_TOKEN,
             })
                 .then(response => {

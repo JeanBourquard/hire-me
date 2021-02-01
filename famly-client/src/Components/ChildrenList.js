@@ -9,7 +9,7 @@ function ChildrenList() {
     const [childSearch, setChildSearchValue] = useState("");
     
     const fetchData = async () => {
-        axios.get('https://tryfamly.co/api/daycare/tablet/group?accessToken=' + ACCESS_TOKEN + '&groupId=' + GROUP_ID + '&institutionId=' + INSTITUTION_ID)
+        axios.get(`https://tryfamly.co/api/daycare/tablet/group?accessToken=${ACCESS_TOKEN}&groupId=${GROUP_ID}&institutionId=${INSTITUTION_ID}`)
             .then(response => {
                 const allChildren = response.data.children;
                 setChildren(allChildren);
@@ -24,7 +24,7 @@ function ChildrenList() {
 
     return (
         <div>
-            <input value={childSearch} onChange={e => setChildSearchValue(e.target.value)} type="" placeholder='search first or lastname' className="search-field"/>
+            <input value={childSearch} onChange={e => setChildSearchValue(e.target.value)} type="" placeholder='search first or last name' className="search-field"/>
             <div className="child-list-container">
                 {children
                     .filter(child => !childSearch || (child.name.fullName.toLowerCase().indexOf(childSearch.toLowerCase()) !== -1))
