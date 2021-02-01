@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Child from './Child';
-
-const ACCESS_TOKEN = '234ffdb8-0889-4be3-b096-97ab1679752c';
-const GROUP_ID = '11fc220c-ebba-4e55-9346-cd1eed714620';
-const INSTITUTION_ID = 'fb6c8114-387e-4051-8cf7-4e388a77b673';
+import {ACCESS_TOKEN, GROUP_ID, INSTITUTION_ID} from '../globalVariables';
 
 
 function ChildrenList() {

@@ -1,10 +1,41 @@
 import React, {useState} from 'react';
 import '../css/app.css';
+import axios from 'axios';
+import {ACCESS_TOKEN} from '../globalVariables';
 
 function Child(data) {
 
     const[childData, setChildData] = useState(data);
+    const[checkedIn, setCheckedIn] = useState(data.childData.checkedIn);
 
+    const checkInOut = (value) => {
+        if(value === true)
+        {
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes();
+            console.log(time)
+            axios.post('https://tryfamly.co/api/v2/children/' + data.childData.childId + '/checkins', {
+                accessToken: ACCESS_TOKEN,
+                pickupTime: time
+            })
+                .then(response => {
+                    console.log('child ' + data.childData.name.fullName + ' checkedin')
+                    setCheckedIn(value);
+                })
+                .catch(error => console.error(`Error: ${error}`));
+        }
+        else
+        {
+            axios.post('https://tryfamly.co/api/v2/children/' + data.childData.childId + '/checkout', {
+                accessToken: ACCESS_TOKEN,
+            })
+                .then(response => {
+                    console.log('child ' + data.childData.name.fullName + ' checkedout')
+                    setCheckedIn(value);
+                })
+                .catch(error => console.error(`Error: ${error}`));
+        }
+    }
 
     return (
         <div className="child-card">
@@ -16,10 +47,13 @@ function Child(data) {
                 <div>
                     {childData.childData.name.lastName}
                 </div>
+                <div className="checkinout-msg">
+                    {checkedIn ? "Checked in" : "Checked out"}
+                </div>
             </div>
             <div className="btn-container">
-                <button className="btn">Check in</button>
-                <button className="btn" disabled>Check out</button>
+                <button onClick={() => checkInOut(true)} className="btn signin-btn" disabled={checkedIn}>Check in</button>
+                <button onClick={() => checkInOut(false)}className="btn signout-btn" disabled={!checkedIn}>Check out</button>
             </div>
         </div>
     )

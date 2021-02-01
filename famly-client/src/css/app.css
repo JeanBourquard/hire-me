@@ -35,7 +35,7 @@ body {
 .child-info {
     margin: 10px;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     align-self: center;
     text-align: start;
 }
@@ -50,18 +50,34 @@ body {
     width: 100px;
     border-radius: 10px;
     border-width: 0;
-    background-color: #FF543D;
+    
     justify-self: center;
     color: white;
     font-weight: bold;
 }
 
-.btn:hover {
-    background-color: rgb(255, 55, 29);
+.signin-btn {
+    background-color: #3FC2A3;
 }
 
-.btn:disabled {
-    background-color: #ff9082;
+.signin-btn:hover {
+    background-color: #00daa7;
+}
+
+.signin-btn:disabled {
+    background-color: #7ebbad77;
+}
+
+.signout-btn {
+    background-color: #FF543D;
+}
+
+.signout-btn:hover {
+    background-color:  #ff1e00;
+}
+
+.signout-btn:disabled {
+    background-color: #ff908277;
 }
 
 .avatar {
@@ -73,4 +89,17 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
+}
+
+.checkinout-msg {
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.checkedin-msg {
+    color: #3FC2A3;
+}
+
+.checkedout-msg{
+    color :#FF543D;
 }
