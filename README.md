@@ -1,3 +1,25 @@
+# How to setup the project
+
+- open a terminal in the subfolder named "famly-client".
+- type in "npm install" to get all the dependencies of the project
+- type in "npm start" to start the application
+- a browser should open to http://localhost:3000/
+
+# Design choices
+
+My first design choice was to make the application easy to use with a single finger on a mobile phone or tablet.
+
+This is why I chose the vertical list layout for mobile and a grid list for tablet.
+
+For the interactions I first chose to have 2 buttons with different colors to check in and check out children. However, due to the colors of the buttons and the current status of the children, I thought it was counter intuitive. The red check out button would be active while the children has a green status of "Checked in". I wanted to make the colors match better the current status of the child.
+
+<img src="C:\Users\USER\Documents\GitLabProjects\hire-me\first-design.PNG" alt="first-design" style="zoom:50%;" />
+
+I then chose to modify the buttons. Instead of having 2 buttons, I chose to have a single slider to check in or out children. The slider has a green color when the child is checked in and it turns red when the child is checked out. This way the user has a consistency between the button color and the current status.
+I also chose to gray out the picture of the child when he is not checked in for better clarity.
+
+I added a search field to browse through the children list more easily. It allows the user to search for a specific child using a firs name or last name.
+
 # Interested in working for Famly?
 
 Give us a chance to see your beautiful code! 🤩 
